@@ -1,2 +1,18 @@
-<h1>Blogs#index</h1>
-<p>Find me in app/views/blogs/index.html.erb</p>
+<h1>ブログ一覧</h1>
+<%= form_with(model: @blog, local: true) do | f | %>
+  <table>
+    <tr>
+      <th>title: </th>
+      <th>content: </th>
+    </tr>
+    <tr>
+      <% @blogs.each do | blog | %>
+        <td><%= blog.title %></td>
+        <td><%= blog.content %></td>
+      <% end %>
+    </tr>
+  </table>
+  <div>
+    <%= link_to "ブログ新規作成へ", new_blog_path %>
+  </div>
+<% end %>
