@@ -5,12 +5,12 @@
       <th>title: </th>
       <th>content: </th>
     </tr>
-    <tr>
-      <% @blogs.each do | blog | %>
+    <% @blogs.each do | blog | %>
+      <tr>
         <td><%= blog.title %></td>
         <td><%= blog.content %></td>
-      <% end %>
-    </tr>
+      </tr>
+    <% end %>
   </table>
   <div>
     <%= link_to "ブログ新規作成へ", new_blog_path %>
