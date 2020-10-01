@@ -1,0 +1,17 @@
+<h1>新規ブログ作成</h1>
+<%= form_with(model: @blog, local: true) do | f | %>
+  <div class="blog_title" >
+    <%= f.label :"title :" %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="blog_content">
+    <%= f.label :"content :" %>
+    <%= f.text_field :content %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+  <div>
+    <%= link_to "ブログ一覧へ", blogs_path %>
+  </div>
+  <% end %>
