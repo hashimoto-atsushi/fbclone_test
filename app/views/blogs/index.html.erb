@@ -2,13 +2,15 @@
 <%= form_with(model: @blog, local: true) do | f | %>
   <table>
     <tr>
-      <th>title: </th>
-      <th>content: </th>
+      <th>タイトル: </th>
+      <th>内容: </th>
     </tr>
     <% @blogs.each do | blog | %>
       <tr>
         <td><%= blog.title %></td>
         <td><%= blog.content %></td>
+        <td><%= link_to "詳細", blog_path(blog.id) %></td>
+        <td><%= link_to "削除", blog_path(blog.id), method: :delete, data: {confirm: "削除してもいいですか？"} %></td>
       </tr>
     <% end %>
   </table>
