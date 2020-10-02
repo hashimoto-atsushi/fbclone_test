@@ -1,5 +1,5 @@
 <%= form_with(model: @blog, local: true, url: choose_new_or_edit) do | f | %>
-  <div class="errors explanation" >
+  <div id="errors explanation" >
     <% if @blog.errors.any? %>
       <P><%= @blog.errors.count %>件のエラーメッセージがあります。</P>
       <ul>
