@@ -1,0 +1,15 @@
+<%= form_with(model: @blog, url: blogs_path, local: true) do | f | %>
+  <div class="blog_title" >
+    <%= f.hidden_field :title %>
+  </div>
+  <div class="blog_content">
+    <%= f.hidden_field :content %>
+  </div>
+  <div>
+  <%= @blog.title %>
+  <%= @blog.content %>
+  <div>
+    <%= f.submit "登録する" %>
+    <%= f.submit "戻る", name: 'back'%>
+  </div>
+<% end %>

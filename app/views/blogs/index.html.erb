@@ -1,5 +1,6 @@
 <h1>ブログ一覧</h1>
 <%= form_with(model: @blog, local: true) do | f | %>
+<%= notice %>
   <table>
     <tr>
       <th>タイトル: </th>
@@ -11,6 +12,7 @@
         <td><%= blog.content %></td>
         <td><%= link_to "詳細", blog_path(blog.id) %></td>
         <td><%= link_to "削除", blog_path(blog.id), method: :delete, data: {confirm: "削除してもいいですか？"} %></td>
+        <td><%= link_to "編集", edit_blog_path(blog.id), data: {confirm: "編集してもいいですか？"} %></td>
       </tr>
     <% end %>
   </table>

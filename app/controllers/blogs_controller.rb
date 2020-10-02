@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_action :set_blog, only:[:show, :edit, :update, :destroy]
   def index
     @blogs = Blog.all
   end
@@ -8,25 +9,49 @@ class BlogsController < ApplicationController
   end
 
   def create
+
     @blog = Blog.new(blog_params)
-    @blog.save
-    redirect_to blogs_path
+    if params[:back]
+      render :new
+    else
+      if @blog.save
+        redirect_to blogs_path, notice: "ブログが作成されました！"
+      else
+        render :new
+      end
+    end
   end
 
   def show
-    @blog = Blog.find(params[:id])
+    @blog
+  end
+
+  def edit
+    @blog
+  end
+
+  def update
+    @blog.update(blog_params)
+    redirect_to blogs_path, notice: "ブログが編集されました。"
   end
 
   def destroy
-    @blog = Blog.find(params[:id])
+    @blog
     @blog.destroy
-    redirect_to blogs_path
+    redirect_to blogs_path, notice: "ブログが削除されました!"
   end
 
-
+  def confirm
+    @blog = Blog.new(blog_params)
+    render :new if @blog.invalid?
+  end
 
   private
   def blog_params
     params.require(:blog).permit(:title, :content)
+  end
+
+  def set_blog
+    @blog = Blog.find(params[:id])
   end
 end
