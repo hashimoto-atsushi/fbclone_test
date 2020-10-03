@@ -5,10 +5,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      #このコードを実行すると、ユーザーのブラウザ内のcookiesに暗号化されたユーザーIDが自動で生成されます。
       session[:user_id] = user.id
       redirect_to user_path(user.id)
-
     else
       flash.now[:danger] = "ログインに失敗しました"
       render :new
