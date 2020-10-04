@@ -17,6 +17,12 @@
     <%= f.label :"content :" %>
     <%= f.text_field :content %>
   </div>
+  <div class="field">
+    <%= only_appear_edit %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
   <div>
     <%= f.submit %>
   </div>

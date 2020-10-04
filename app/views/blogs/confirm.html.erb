@@ -6,8 +6,13 @@
     <%= f.hidden_field :content %>
   </div>
   <div>
-  <%= @blog.title %>
-  <%= @blog.content %>
+    <%= @blog.title %>
+    <%= @blog.content %>
+  </div>
+  <div>
+    <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+    <%= f.hidden_field :image_cache %>
+  </div>
   <div>
     <%= f.submit "登録する" %>
     <%= f.submit "戻る", name: 'back'%>

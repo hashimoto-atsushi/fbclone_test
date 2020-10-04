@@ -6,4 +6,10 @@ module BlogsHelper
       blog_path
     end
   end
+
+  def only_appear_edit
+    if action_name == "edit"
+       image_tag @blog.image.url
+    end
+  end
 end

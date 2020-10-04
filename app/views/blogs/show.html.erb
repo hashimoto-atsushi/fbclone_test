@@ -2,5 +2,12 @@
 <%= form_with(model: @blog, local: true) do | f | %>
 <p>タイトル: <%= @blog.title %></p>
 <P>内容: <%= @blog.content %></P>
+<P>Image: <%= image_tag @blog.image.url %></P>
 <%= link_to "ブログ一覧に戻る", blogs_path %>
+<% unless @blog.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to "お気に入り解除する", favorite_path(id: @favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to "お気に入りする", favoretes_path(blog_id: @blog.id), method: :post, class:'btn btn-primary' %>
+  <% end %>
 <% end %>
