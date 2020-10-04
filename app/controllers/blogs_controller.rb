@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
 
   def new
     if params[:back]
-    @blog = Blog.new(blog_params)
+    @blog = Blog.new
     else
       @blog = Blog.new
     end
@@ -27,11 +27,19 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    if current_user.id == @blog.user.id
+        @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    else
+      redirect_to blogs_path
+    end
   end
 
   def edit
-    @blog
+    if current_user.id == @blog.user.id
+      @blog
+    else
+      redirect_to blogs_path
+    end
   end
 
   def update
@@ -40,10 +48,12 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    @blog
-    @blog.destroy
-    redirect_to blogs_path, notice: "ブログが削除されました!"
-  end
+    if current_user.id == @blog.user.id
+      @blog
+      @blog.destroy
+      redirect_to blogs_path, notice: "ブログが削除されました!"
+    end
+    end
 
   def confirm
     @blog = Blog.new(blog_params)

@@ -18,8 +18,8 @@
     <%= f.text_field :content %>
   </div>
   <div class="field">
-    <%= only_appear_edit %>
     <%= f.label :image %>
+    <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </div>
