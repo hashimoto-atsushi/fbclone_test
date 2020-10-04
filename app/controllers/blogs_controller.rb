@@ -5,10 +5,14 @@ class BlogsController < ApplicationController
   end
 
   def new
-    if params[:back]
-    @blog = Blog.new
-    else
+    if logged_in?
+      if params[:back]
       @blog = Blog.new
+      else
+        @blog = Blog.new
+      end
+    else
+      redirect_to blogs_path
     end
   end
 
@@ -27,15 +31,11 @@ class BlogsController < ApplicationController
   end
 
   def show
-    if current_user.id == @blog.user.id
-        @favorite = current_user.favorites.find_by(blog_id: @blog.id)
-    else
-      redirect_to blogs_path
-    end
+    @blog = Blog.find(@blog.id)
   end
 
   def edit
-    if current_user.id == @blog.user.id
+    if current_user.id == @blog.user_id
       @blog
     else
       redirect_to blogs_path
@@ -48,12 +48,12 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @blog.user.id
+    if current_user.id == @blog.user_id
       @blog
       @blog.destroy
       redirect_to blogs_path, notice: "ブログが削除されました!"
     end
-    end
+  end
 
   def confirm
     @blog = Blog.new(blog_params)

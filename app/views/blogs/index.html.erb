@@ -14,15 +14,17 @@
         <td><%= blog.content %></td>
         <td><%= image_tag blog.image.url %></td>
         <td><%= blog.user.name %></td>
-        <% if current_user.id == @blog.user.id %>
-          <td><%= link_to "詳細", blog_path(blog.id) %></td>
-          <td><%= link_to "削除", blog_path(blog.id), method: :delete, data: {confirm: "削除してもいいですか？"} %></td>
-          <td><%= link_to "編集", edit_blog_path(blog.id), data: {confirm: "編集してもいいですか？"} %></td>
+        <td><%= link_to "詳細", blog_path(blog.id) %></td>
+        <% if logged_in? && current_user.id == blog.user.id %>
+        <td><%= link_to "削除", blog_path(blog.id), method: :delete, data: {confirm: "削除してもいいですか？"} %></td>
+        <td><%= link_to "編集", edit_blog_path(blog.id), data: {confirm: "編集してもいいですか？"} %></td>
         <% end %>
       </tr>
     <% end %>
   </table>
   <div>
-    <%= link_to "ブログ新規作成へ", new_blog_path %>
+    <% if logged_in? %>
+      <%= link_to "ブログ新規作成へ", new_blog_path %>
+    <% end %>
   </div>
 <% end %>
