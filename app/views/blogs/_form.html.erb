@@ -23,7 +23,7 @@
         <%= f.label :"画像を投稿する:" %>
       </div>
       <div>
-        <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+        <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>       
       </div>
       <div>
         <%= f.file_field :image %>

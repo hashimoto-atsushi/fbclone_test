@@ -11,7 +11,9 @@
         <td class="name"colspan="3">投稿者:  <%= blog.user.name %></td>
       </tr>
       <tr>
+        <% unless blog.image.blank? %>
         <td colspan="3"><%= image_tag blog.image.url %></td>
+        <% end %>
       </tr>
       <tr>
         <td class ="content" colspan="3"><%= blog.content %></td>
