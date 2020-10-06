@@ -4,22 +4,41 @@
     <title>FbcloneApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
-    <%= link_to "Profile", user_path(current_user.id) %>
-    <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-    <%= link_to "Sign up", new_user_path %>
-    <%= link_to "Login", new_session_path %>
-    <% end %>
-    <%= yield %>
+    <div class="wrapper">
+      <header>
+        <h2 class="header-logo">FbKlone</h2>
+        <div class="Login_indication">
+          <% if logged_in? %>
+          <%= link_to "MyPage", user_path(current_user.id), class: "link" %>
+          <%= link_to "Logout", session_path(current_user.id), method: :delete, class: "link" %>
+        </div>
+        <div class="Login_indication">
+          <% else %>
+          <%= link_to "Sign up", new_user_path, class: "link" %>
+          <%= link_to "Login", new_session_path, class: "link" %>
+          <% end %>
+        </div>
+        <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}")%>
+        <% end %>
+      </header>
+
+      <main>
+        <%= yield %>
+      </main>
+      <footer>
+        <ul class="contact">
+          <li class="test">かいしゃ概要</li>
+          <li class="test">沿革</li>
+          <li class="test">お問い合わせ</li>
+        </ul>
+      </footer>
+    </div>
   </body>
 </html>

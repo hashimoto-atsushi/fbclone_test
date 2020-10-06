@@ -1,9 +1,21 @@
-<h1>ログイン画面</h1>
-<%= form_with(scope: :session, url: sessions_path, local: true) do | f | %>
-<%= f.label :email %>
-<%= f.email_field :email %>
-<%= f.label :password %>
-<%= f.password_field :password %>
-<%= f.submit "ログイン" %>
-<%= link_to "ブログ一覧に戻る", blogs_path %>
+<h1 class="head-letter">ログイン画面</h1>
+<%= image_tag "border_design.png", class: "main_pic" %>
+
+<div class="input-wrap">
+  <%= form_with(scope: :session, url: sessions_path, local: true) do | f | %>
+  <div class="new-input">
+    <%= f.label :"Eメール:" %>
+    <%= f.email_field :email ,class:"newemail-input" %>
+  </div>
+<div class="new-input">
+  <%= f.label :"パスワード:" %>
+  <%= f.password_field :password, class:"newpassword-input" %>
+</div>
+  <div class="submit">
+    <%= f.submit "ログイン" %>
+  </div>
+</div>
+<%= image_tag "border_design.png", class: "bottom_pic" %>
+
+<%= link_to "ブログ一覧に戻る", blogs_path, class:"link-around" %>
 <% end %>

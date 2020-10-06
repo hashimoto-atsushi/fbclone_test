@@ -9,24 +9,32 @@
       </ul>
     <% end %>
   </div>
-  <div class="blog_title" >
-    <%= f.label :"title :" %>
-    <%= f.text_field :title %>
+  <div class="input-wrap">
+    <div class="blog-title" >
+      <%= f.label :"タイトル :" %>
+      <%= f.text_field :title, class: "title-input" %>
+    </div>
+    <div class="blog-content">
+      <%= f.label :"内容 :" %>
+      <%= f.text_area :content, class: "blog-input"%>
+    </div>
+    <div class="file-field">
+      <div>
+        <%= f.label :"画像を投稿する:" %>
+      </div>
+      <div>
+        <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+      </div>
+      <div>
+        <%= f.file_field :image %>
+        <%= f.hidden_field :image_cache %>
+      </div>
   </div>
-  <div class="blog_content">
-    <%= f.label :"content :" %>
-    <%= f.text_field :content %>
-  </div>
-  <div class="field">
-    <%= f.label :image %>
-    <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
+  <div class="submit">
+    <%= f.submit "ブログを投稿する"%>
   </div>
   <div>
-    <%= f.submit %>
-  </div>
-  <div>
-    <%= link_to "ブログ一覧へ", blogs_path %>
+    <%= image_tag "border_design.png", class: "bottom_pic" %>
+    <%= link_to "ブログ一覧へ", blogs_path, class:"link-around" %>
   </div>
 <% end %>

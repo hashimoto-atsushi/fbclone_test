@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only:[:show, :edit, :update, :destroy]
+
   def index
     @blogs = Blog.all
   end
@@ -7,7 +8,7 @@ class BlogsController < ApplicationController
   def new
     if logged_in?
       if params[:back]
-      @blog = Blog.new
+        @blog = Blog.new
       else
         @blog = Blog.new
       end

@@ -10,6 +10,211 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap/dist/css/bootstrap.min
  *= require_tree .
  *= require_self
  */
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  font-family: Helvetica,"メイリオ", "MS PGothic", sans-serif;
+  position: relative;
+  box-sizing: border-box;
+  padding-bottom: 50px;
+}
+
+header {
+   height: 100px;
+   width: 100%;
+   background-color: #3b6ff5 ;
+ }
+
+ .header-logo {
+   font-size: 3.5rem;
+   color: #ffffff;
+   margin: 0;
+   padding: 30px 20px;
+   float: left;
+ }
+
+main {
+  width: 1200px;
+  margin: 0 20px;
+}
+
+.head-letter {
+  font-size: 2.5rem;
+  margin: 30px 0 0 20px;
+  letter-spacing: 5px;
+}
+
+.main_pic {
+  width: 100%;
+  height: 10px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+table {
+  width: 700px;
+  margin: 0 0 0 30px;
+}
+
+table th td {
+  border: none;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-top: 20px;
+}
+
+.name {
+  text-align: right;
+}
+
+.content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+}
+
+.action-select {
+  list-style: none;
+  float: right;
+}
+
+.action-select li {
+  padding-right: 30px;
+  float: left;
+}
+
+.action-li {
+  text-decoration: none;
+}
+
+ .link {
+   font-size: 1.7rem;
+   color: #ffffff;
+   text-decoration: none;
+   padding-left: 10px;
+ }
+
+ .Login_indication {
+   float: right;
+   padding: 60px 30px;
+ }
+
+footer {
+  height: 50px;
+  width: 100%;
+  background-color: #3b6ff5 ;
+  color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.contact {
+  float: right;
+}
+
+.test{
+  float: left;
+  padding-right: 40px;
+}
+
+.border_pic {
+  width: 700px;
+  height: 10px;
+  margin-bottom: 20px;
+}
+
+.blog-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.title-input {
+  width: 400px;
+  margin-left: 25px;
+}
+
+.blog-content {
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+}
+
+.blog-input {
+  width: 600px;
+  height: 150px;
+  margin-left: 57px;
+  vertical-align: top;
+}
+
+.file-field {
+  padding-bottom: 30px;
+}
+
+.submit {
+  padding-bottom: 30px;
+}
+
+.link-around {
+  text-decoration: none;
+  margin-left: 30px;
+}
+
+.input-wrap {
+  margin-left: 50px;
+}
+
+.submit {
+  margin-top: 30px;
+}
+
+span {
+  padding-left: 30px;
+}
+
+.bottom_pic {
+  width: 100%;
+  height: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+.input-wrap {
+  padding: 10px 0 20px 20px;
+}
+
+.new-input {
+  margin: 20px 0;
+}
+
+.newname-input {
+  margin-left: 50px;
+}
+
+.newemail-input {
+  margin-left: 23px;
+}
+
+.newpassword-input {
+  margin-left: 3px;
+}
+
+.new-submit {
+  margin: 40px 0;
+}
+
+.iamge-upload {
+  margin-top: 20px;
+}
+
+.flash {
+}

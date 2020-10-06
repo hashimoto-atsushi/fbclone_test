@@ -1,30 +1,40 @@
-<h1>ブログ一覧</h1>
+<h1 class="head-letter">投稿ブログ</h1>
+<%= image_tag "border_design.png", class: "main_pic" %>
 <%= form_with(model: @blog, local: true) do | f | %>
-<%= notice %>
+  <%= notice %>
   <table>
-    <tr>
-      <th>タイトル: </th>
-      <th>内容: </th>
-      <th>投稿写真: </th>
-      <th>投稿者: </th>
-    </tr>
     <% @blogs.each do | blog | %>
       <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <td><%= image_tag blog.image.url %></td>
-        <td><%= blog.user.name %></td>
-        <td><%= link_to "詳細", blog_path(blog.id) %></td>
-        <% if logged_in? && current_user.id == blog.user.id %>
-        <td><%= link_to "削除", blog_path(blog.id), method: :delete, data: {confirm: "削除してもいいですか？"} %></td>
-        <td><%= link_to "編集", edit_blog_path(blog.id), data: {confirm: "編集してもいいですか？"} %></td>
-        <% end %>
+        <td class="title"colspan="3"><%= blog.title %></td>
+      </tr>
+      <tr>
+        <td class="name"colspan="3">投稿者:  <%= blog.user.name %></td>
+      </tr>
+      <tr>
+        <td colspan="3"><%= image_tag blog.image.url %></td>
+      </tr>
+      <tr>
+        <td class ="content" colspan="3"><%= blog.content %></td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="action-select">
+            <li><%= link_to "詳細", blog_path(blog.id), class: "action-li" %></li>
+            <% if logged_in? && current_user.id == blog.user.id %>
+            <li><%= link_to "削除", blog_path(blog.id), method: :delete, data: {confirm: "削除してもいいですか？"}, class: "action-li"  %></li>
+            <li><%= link_to "編集", edit_blog_path(blog.id), data: {confirm: "編集してもいいですか？"}, class: "action-li"  %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3"><%= image_tag "border_design.png", class: "border_pic" %></td>
       </tr>
     <% end %>
   </table>
-  <div>
+  <div class>
     <% if logged_in? %>
-      <%= link_to "ブログ新規作成へ", new_blog_path %>
+      <%= link_to "ブログ新規作成へ", new_blog_path, class:"link-around" %>
     <% end %>
   </div>
 <% end %>
