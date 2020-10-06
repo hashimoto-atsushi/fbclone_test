@@ -6,7 +6,9 @@
     <P class="blog-content" >内容: <%= @blog.content %></P>
     <P class="">現在投稿している画像</P>
     <div>
+      <% unless @blog.image.blank? %>
       <%= image_tag @blog.image.url %>
+      <% end %>
     </div>
   </div>
   <%= image_tag "border_design.png", class: "bottom_pic" %>
